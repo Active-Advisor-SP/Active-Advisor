@@ -29,7 +29,7 @@ function NavbarComponent() {
               <Nav.Link className="navLink" href="#home" >
                 Home
               </Nav.Link>
-              <Nav.Link className="navLink" href="#aboutUs">
+              <Nav.Link to="/about" className="navLink" href="#aboutUs">
                 About Us
               </Nav.Link>
               <Nav.Link className="navLink" href="#communities">
