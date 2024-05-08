@@ -1,4 +1,3 @@
-import CarouselItem from "react-bootstrap/esm/CarouselItem";
 import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import './carousel.css'

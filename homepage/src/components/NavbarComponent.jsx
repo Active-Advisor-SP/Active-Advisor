@@ -2,11 +2,13 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Search } from "@mui/icons-material";
 import "./navbar.css";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 
 
 
 function NavbarComponent() {
+
   return (
       <>
       <Navbar collapseOnSelect expand="lg" className="navbar" data-bs-theme="dark">
@@ -26,18 +28,18 @@ function NavbarComponent() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-              <Nav.Link className="navLink" href="#home" >
-                Home
-              </Nav.Link>
-              <Nav.Link className="navLink" href="#aboutUs">
+              <Link to="/Homepage" className="navLink" >
+                Homepage
+              </Link>
+              <Link to="/About" className="navLink" >
                 About Us
-              </Nav.Link>
-              <Nav.Link className="navLink" href="#communities">
-                Communities
-              </Nav.Link>
-              <Nav.Link className="navLink" href="#contact">
+              </Link>
+              <Link to="/Communities" className="navLink" >
+                Communities | SportsFields
+              </Link>
+              <Link to="/Contact" className="navLink" >
                 Contact
-              </Nav.Link>
+              </Link>
             </Nav>
         </Navbar.Collapse>
             
@@ -50,8 +52,8 @@ function NavbarComponent() {
             </div>
           </div>
           <div className="navbarButtons">
-            <button id="btn1">Log In</button>
-            <button id="btn2">Sign Up</button>
+            <button id="btn1"><Link className="buttonLinks" to="/LogIn">Log In</Link></button>
+            <button id="btn2"><Link className="buttonLinks" to="/SignUp">Sign Up</Link></button>
           </div>
         </div>
       </Navbar>

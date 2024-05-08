@@ -5,6 +5,11 @@
 
 .navLink{
     font-size: 18px !important;
+    color: #fff !important;
+    text-decoration: none; 
+}
+Link:hover {
+   color:#3b6e68!important;
 }
 
 .navbarContainer{
@@ -84,4 +89,10 @@
 
 #btn2{
     background-color: rgb(46, 65, 64);
+}
+
+.buttonLinks{
+    color: #fff;
+    text-decoration: none;
+    
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import "../App.css";
 import NavbarComponent from "./NavbarComponent";
-import { useState } from "react";
 import FooterComp from "./FooterComp";
 import CarouselComponent from "./CarouselComponent";
 import SidebarComponent from "./SidebarComponent";
@@ -10,11 +9,7 @@ import RightbarComponent from "./RightbarComponent";
 import HomeMap from "./HomeMap";
 
 function Homepage() {
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
+  
 
   return (
     <>
@@ -54,6 +49,11 @@ function Homepage() {
         </div>
       </div>
       <br />
+      <div className="row">
+        <div className="col-md-4">
+        
+        </div>
+      </div>
 
       <FooterComp />
     </>

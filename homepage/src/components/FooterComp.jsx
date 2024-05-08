@@ -1,7 +1,4 @@
 import React from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
 import "./footer.css";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -17,7 +14,7 @@ import {
   MDBRow,
 } from "mdb-react-ui-kit";
 
-const defaultTheme = createTheme();
+
 
 function FooterComp() {
   return (
@@ -120,19 +117,19 @@ function FooterComp() {
         </section>
         <div className="footerLinks">
           <div>
-            <a href="" className="me-4 text-reset">
+            <a target="blank-page" href="https://tr-tr.facebook.com/reg/" className="me-4 text-reset">
               <FacebookIcon />
             </a>
-            <a href="" className="me-4 text-reset">
+            <a target="blank-page" href="https://twitter.com/i/flow/login" className="me-4 text-reset">
               <TwitterIcon />
             </a>
-            <a href="" className="me-4 text-reset">
+            <a target="blank-page" href="https://www.instagram.com/" className="me-4 text-reset">
               <InstagramIcon />
             </a>
-            <a href="" className="me-4 text-reset">
+            <a target="blank-page" href="https://tr.linkedin.com/" className="me-4 text-reset">
               <LinkedInIcon />
             </a>
-            <a href="" className="me-4 text-reset">
+            <a target="blank-page" href="https://www.youtube.com/" className="me-4 text-reset">
               <YouTubeIcon />
             </a>
             
