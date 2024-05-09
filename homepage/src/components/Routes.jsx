@@ -8,6 +8,7 @@ import Error from "../pages/Error";
 import SignUp from "../pages/SignUp";
 import LogIn from "../pages/LogIn";
 import Chat from "../pages/Chat"
+import ForgotPass from "../pages/ForgotPass";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
@@ -37,6 +38,9 @@ export const Routes =() => {
             </Route>
             <Route path="/Profile">
                 <Profile />
+            </Route>
+            <Route path="/ForgotPass">
+                <ForgotPass />
             </Route>
             
             <Route path="/*" >

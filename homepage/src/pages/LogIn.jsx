@@ -7,6 +7,7 @@ import { signIn } from '../config/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useCallback } from 'react';
 import { auth } from '../config/firebase';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 
 const styles = {
@@ -150,8 +151,8 @@ function LogIn() {
             </div>
             <div style={styles.rememberForgot}>
               <label><input type="checkbox"/>Remember me</label>
-              <a href="#" style={styles.registerLinkA}>Forgot password?</a>
-            </div>
+              <Link to="/ForgotPass">Forgot Password</Link>
+              </div>
             
             <button type="submit" className="btn" style={styles.btn}>Log In</button>
             <div className="register-link" style={styles.registerLink}>
