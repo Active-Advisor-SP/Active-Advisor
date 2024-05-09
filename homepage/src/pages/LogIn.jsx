@@ -2,6 +2,11 @@ import React from 'react'
 import { FaUser, FaLock } from "react-icons/fa";
 import { useState } from "react";
 import { Redirect } from 'react-router-dom/cjs/react-router-dom';
+import { useEffect } from 'react';
+import { signIn } from '../config/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useCallback } from 'react';
+import { auth } from '../config/firebase';
 
 
 const styles = {
@@ -85,19 +90,34 @@ const styles = {
 
 function LogIn() {
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    signIn("joe@gmail.com", "1234567").then(() => {
+      console.log("Done.");
+    }).catch((e) => {
+      console.log(e);
+    });
+  },[]);
+
+  const handleSubmit = useCallback((e) =>{
     e.preventDefault();
-    // Koşulu burada kontrol edin
-    if (username && password) {
-      setRedirect(true);
-    } else {
-      alert('Please fill in all fields');
+    console.log(email, password);
+
+    if( !email || !password ){
+      return;
     }
-  };
+    signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      alert("you have logged in!")
+      setRedirect(true);
+    })
+    .catch((e) =>{
+      console.log(e);
+    });
+  }, [email, password]);
 
   if (redirect) {
     // Yönlendirme burada gerçekleşiyor
@@ -112,10 +132,10 @@ function LogIn() {
             <h1 style={styles.h1}>Login</h1>
             <div style={styles.inputBox}>
               <input 
-                value={username}
-                type='text' 
-                placeholder='Username' 
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                type='email' 
+                placeholder='Email' 
+                onChange={(e) => setEmail(e.target.value)}
                 required style={styles.input}/>
               <FaUser style={styles.icon}/>
             </div>

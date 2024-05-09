@@ -2,6 +2,11 @@ import React from "react";
 import { useState, createRef } from "react";
 import { Redirect } from "react-router-dom/cjs/react-router-dom";
 import { handleSubmit } from "react";
+import { useEffect } from "react";
+import { signUp } from "../config/firebase";
+import { useCallback } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../config/firebase'
 
 const styles = {
   wrapper: {
@@ -81,15 +86,24 @@ function SignUp() {
   const [password, setPassword] = useState("")
   const [redirect, setRedirect] = useState(false);
 
-  const handleSubmit = (e) => {
+ 
+
+  const handleSubmit = useCallback((e) =>{
     e.preventDefault();
-    // Koşulu burada kontrol edin
-    if (firstName && lastName && email && username && password) {
-      setRedirect(true);
-    } else {
-      alert('Please fill in all fields');
+    console.log(email, password);
+
+    if( !email || !password ){
+      return;
     }
-  };
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      alert("you have logged in!")
+      setRedirect(true);
+    })
+    .catch((e) =>{
+      console.log(e);
+    });
+  }, [email, password]);
 
   if (redirect) {
     // Yönlendirme burada gerçekleşiyor
@@ -97,18 +111,7 @@ function SignUp() {
   }
 
 
-  // async function handleSubmit(event) {
-  //   event.preventDefault();
-  //   if (!passwordInputRef.current.value) return;
-
-    // try{
-    //   await api.post("/users/signup", { name, email, password: passwordInputRef.current.value });
-
-    //   alert('Kaydoldunuz! Artık giriş yapabilirsiniz');
-    //   Router.push('/LogIn')
-    // }catch{
-    //   alert('Hata oluştu! Lütfen bilgilerinizi kontrol edin');
-    // };
+  
   
 
   return (
@@ -121,7 +124,7 @@ function SignUp() {
               value={firstName}
               type="text"
               placeholder="First Name"
-              onChange={(e) => setfirstName(e.target.value)}
+              onChange={(e) => setfirstName(e.currentTarget.value)}
               required
               style={styles.input}
             />
@@ -131,7 +134,7 @@ function SignUp() {
               value={lastName}
               type="text"
               placeholder="Last Name"
-              onChange={(e) =>  setlastName(e.target.value)}
+              onChange={(e) =>  setlastName(e.currentTarget.value)}
               required
               style={styles.input}
             />
@@ -141,7 +144,7 @@ function SignUp() {
               value={email}
               type="email"
               placeholder="E-mail Address"
-              onChange={(e) =>  setEmail(e.target.value)}
+              onChange={(e) =>  setEmail(e.currentTarget.value)}
               required
               style={styles.input}
             />
@@ -151,7 +154,7 @@ function SignUp() {
               value={username}
               type="text"
               placeholder="Username"
-              onChange={(e) =>  setUsername(e.target.value)}
+              onChange={(e) =>  setUsername(e.currentTarget.value)}
               required
               style={styles.input}
             />
@@ -161,7 +164,7 @@ function SignUp() {
               value={password}
               type="password"
               placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.currentTarget.value)}
               required
               style={styles.input}
             />
